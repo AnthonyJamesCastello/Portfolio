@@ -3,12 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Anthony Castello · IT Portfolio</title>
-  <meta name="description" content="Portfolio website for Anthony Castello — IT major at FSU, CS tutor, and aspiring software/IT professional." />
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 
-  <!-- Open Graph / Twitter for rich link previews -->
-  <meta property="og:title" content="Anthony Castello · IT Portfolio" />
-  <meta property="og:description" content="IT major at FSU · CS Tutor · Projects in C++, web, and SQL." />
+  <title>Anthony Castello · C++ & Web Basics</title>
+  <meta name="description" content="Portfolio for Anthony Castello — C++ developer & CS tutor. I build clean, reliable console apps and simple, accessible web pages (HTML/CSS)." />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Anthony Castello · C++ & Web Basics" />
+  <meta property="og:description" content="CS Tutor at FSU · C++ as primary language · Building console utilities and simple, accessible web pages (HTML/CSS)." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/resume-thumb.png" />
   <meta name="twitter:card" content="summary" />
@@ -17,90 +20,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --bg: #0b1020;
-      --panel: #111836;
-      --text: #e6e9f2;
-      --muted: #9aa3b2;
-      --brand: #38bdf8;
-      --brand-2: #22d3ee;
-      --ring: rgba(56,189,248,.3);
-      --ok: #34d399; --warn: #f59e0b; --danger: #f87171;
-      --shadow: 0 10px 30px rgba(2,8,23,.45);
-    }
-    @media (prefers-color-scheme: light) {
-      :root { --bg:#f8fafc; --panel:#ffffff; --text:#0f172a; --muted:#475569; --shadow: 0 8px 24px rgba(15,23,42,.08); }
-      header.nav { background: rgba(255,255,255,.7); backdrop-filter: saturate(180%) blur(14px); border-bottom: 1px solid #e2e8f0; }
-    }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-    a{color:var(--brand);text-decoration:none} a:hover{color:var(--brand-2)}
-    img{max-width:100%;display:block}
-    .container{width:min(1100px,92vw);margin-inline:auto}
-    .grid{display:grid;gap:1.25rem}
-
-    header.nav{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(2,8,23,.9),rgba(2,8,23,.6));backdrop-filter:saturate(150%) blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.7rem 0}
-    .brand{display:flex;align-items:center;gap:.6rem;font-weight:700}
-    .brand .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 0 0 4px var(--ring)}
-    nav a{margin-left:1rem;text-decoration:none;font-weight:600;color:var(--text);opacity:.9}
-    nav a:hover{opacity:1}
-
-    .menu-btn{display:none; background:transparent; border:1px solid rgba(255,255,255,.2); padding:.45rem .6rem; border-radius:10px; color:var(--text)}
-    @media(max-width:820px){
-      nav.primary{display:none;position:absolute;right:1rem;top:60px;background:var(--panel);border:1px solid rgba(255,255,255,.1);border-radius:12px;box-shadow:var(--shadow)}
-      nav.primary.open{display:block}
-      nav.primary a{display:block;padding:.7rem 1rem;margin:0;min-width:200px;border-bottom:1px solid rgba(255,255,255,.06)}
-      .menu-btn{display:inline-flex}
-    }
-
-    .hero{padding:clamp(3rem,6vw,5rem) 0 2rem}
-    .hero-wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:center}
-    @media(max-width:900px){.hero-wrap{grid-template-columns:1fr}}
-    .badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(56,189,248,.12);color:#9be4ff;border:1px solid var(--ring);padding:.35rem .7rem;border-radius:999px;font-size:.85rem}
-    h1{font-size:clamp(2rem,4vw,3rem);line-height:1.15;margin:.6rem 0}
-    .lead{font-size:1.05rem;color:var(--muted)}
-    .cta-row{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.2rem}
-    .btn{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(255,255,255,.12);background:var(--panel);padding:.7rem 1rem;border-radius:12px;color:var(--text);text-decoration:none;box-shadow:var(--shadow)}
-    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));border-color:transparent;color:#041421}
-    .btn:hover{transform:translateY(-1px)}
-
-    .card{background:var(--panel);border:1px solid rgba(255,255,255,.06);border-radius:16px;box-shadow:var(--shadow)}
-    .card.pad{padding:1.2rem}
-    .soft{color:var(--muted)}
-    section{padding:clamp(2rem,4vw,3.5rem) 0}
-    .section-title{display:flex;align-items:center;gap:.7rem;font-size:1.2rem;letter-spacing:.02em;color:var(--muted);text-transform:uppercase}
-    .section-title .line{height:1px;background:linear-gradient(90deg,var(--brand),transparent);flex:1}
-    h2{margin:.6rem 0 1rem;font-size:clamp(1.5rem,2.4vw,2rem)}
-
-    .skills{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
-    .pill{display:inline-flex;align-items:center;justify-content:center;padding:.55rem .8rem;border-radius:999px;background:rgba(148,163,184,.12);border:1px solid rgba(148,163,184,.2)}
-
-    .xp{grid-template-columns:1fr 1fr}
-    @media(max-width:900px){.xp{grid-template-columns:1fr}}
-    .xp-item{display:grid;grid-template-columns:auto 1fr;gap:.9rem}
-    .xp-item .when{font-size:.9rem;color:var(--muted)}
-
-    .projects{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    .project{display:flex;flex-direction:column}
-    .project h3{margin:.4rem 0}
-    .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
-    .tag{font-size:.8rem;background:rgba(56,189,248,.12);color:#90defc;border:1px solid var(--ring);padding:.25rem .5rem;border-radius:999px}
-
-    .contact .grid{grid-template-columns:1.2fr .8fr}
-    @media(max-width:900px){.contact .grid{grid-template-columns:1fr}}
-
-    footer{padding:2rem 0;color:var(--muted);border-top:1px solid rgba(255,255,255,.06)}
-    .kbd{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); border-radius:6px; padding:.1rem .35rem;}
-
-    .accent{background: radial-gradient(600px 300px at 10% -10%, rgba(56,189,248,.15), transparent 40%), radial-gradient(600px 300px at 110% 10%, rgba(34,211,238,.15), transparent 40%);}    
-
-    :focus-visible{outline:3px solid var(--brand-2); outline-offset:2px}
-  </style>
 </head>
 <body class="accent">
   <header class="nav" aria-label="Primary">
@@ -121,12 +40,19 @@
     </div>
   </header>
 
+  <!-- Hero Section with Video Background -->
   <section class="hero" id="top">
+    <video autoplay muted loop playsinline id="heroVideo">
+      <source src="stars-background.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="overlay"></div>
+
     <div class="container hero-wrap">
       <div>
-        <span class="badge">IT Major @ FSU · CS Tutor · Building practical tools</span>
-        <h1>IT-focused problem solver passionate about user-centered systems and simple, reliable software.</h1>
-        <p class="lead">I’m an Information Technology major at Florida State University with hands-on experience tutoring C++ and building small web/SQL projects. Previously, I worked in safety operations at Amazon. I like shipping clean, accessible interfaces and tooling that helps people.</p>
+        <span class="badge">C++ Developer · CS Tutor</span>
+        <h1>Building simple, reliable console apps and clean, accessible web pages.</h1>
+        <p class="lead">I’m a developer who enjoys turning ideas into clear, maintainable code. My primary language is <strong>C++</strong>. I also build simple static sites with <strong>HTML/CSS</strong>. I focus on readability, input validation, and user-friendly interfaces.</p>
         <div class="cta-row">
           <a class="btn primary" href="#projects">View Projects</a>
           <a class="btn" href="https://github.com/AnthonyJamesCastello" target="_blank" rel="noopener">GitHub</a>
@@ -138,39 +64,56 @@
         <div class="card pad" role="img" aria-label="Profile summary">
           <h2 style="margin:0 0 .5rem">Quick stats</h2>
           <ul class="soft" style="margin:0;padding-left:1.1rem">
-            <li>IT Major — Florida State University</li>
-            <li>FSU Computer Science Tutor (C++)</li>
-            <li>Prev: Amazon Safety Operations (2023–2024)</li>
-            <li>Focus: Helpdesk/IT Ops · Frontend basics · SQL</li>
+            <li>Florida State University · CS Tutor (C++)</li>
+            <li>Primary language: <strong>C++</strong></li>
+            <li>Web basics: HTML · CSS</li>
+            <li>Interests: Frontend UX · CS fundamentals</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- About -->
   <section id="about">
     <div class="container">
       <div class="section-title"><span>About</span><span class="line"></span></div>
       <div class="card pad">
-        <p>I’m Anthony, an IT student who enjoys turning ideas into simple, reliable solutions. Whether it’s helping a student debug a C++ loop or deploying a small web tool, I aim for clarity, accessibility, and maintainability. I’m currently growing skills in systems support, endpoint management, and lightweight web apps that support ops and student life.</p>
-        <p class="soft">Actively seeking internships and part-time roles in IT Support, Help Desk, or Junior Web roles where I can combine people skills, troubleshooting, and clean UI basics.</p>
+        <p>I’m Anthony, a developer who likes building straightforward, dependable tools. Whether I’m helping a student reason about a C++ loop or shipping a small web page, I aim for code that’s easy to read, test, and maintain. I care about user experience, clear naming, and pragmatic solutions.</p>
+        <p class="soft">I’m actively seeking internships and entry-level roles where I can ship features, learn fast, and contribute to quality. I’m focused on C++ and web basics (HTML/CSS). No backend/data work yet—currently learning fundamentals.</p>
       </div>
     </div>
   </section>
 
+  <!-- Skills -->
   <section id="skills">
     <div class="container">
       <div class="section-title"><span>Skills</span><span class="line"></span></div>
       <div class="grid skills">
-        <div class="card pad"><strong>IT & Systems</strong><br><span class="soft">Help Desk · Ticketing · Troubleshooting · Windows/macOS basics · Networking fundamentals</span></div>
-        <div class="card pad"><strong>Languages</strong><br><span class="soft">C++ · HTML · CSS · SQL · Bash basics</span></div>
-        <div class="card pad"><strong>Tools</strong><br><span class="soft">Git/GitHub · VS Code · Command Line · Google Workspace · Markdown</span></div>
-        <div class="card pad"><strong>Soft Skills</strong><br><span class="soft">Teaching/Tutoring · Communication · Incident Prevention · Documentation</span></div>
+        <div class="card pad">
+          <strong>Languages & Core</strong><br>
+          <span class="soft">C++ (primary) · HTML · CSS (basics) · Bash (basics)</span>
+        </div>
+        <div class="card pad">
+          <strong>Web</strong><br>
+          <span class="soft">Semantic HTML · Responsive CSS · Accessibility basics</span>
+        </div>
+        <div class="card pad">
+          <strong>Computer Science</strong><br>
+          <span class="soft">Problem decomposition · Control flow · Functions · Arrays · Classes/OOP</span>
+        </div>
+        <div class="card pad">
+          <strong>Tools & Workflow</strong><br>
+          <span class="soft">Git/GitHub · VS Code · Command line · Docs & testing mindset</span>
+        </div>
       </div>
-      <div class="soft" style="margin-top:.8rem">Learning next: JavaScript fundamentals · Basic scripting/automation · Endpoint management (Intune/Jamf) · Cloud basics.</div>
+      <div class="soft" style="margin-top:.8rem">
+        Learning next: Data structures & algorithms · JavaScript basics · TypeScript/React later.
+      </div>
     </div>
   </section>
 
+  <!-- Experience -->
   <section id="experience">
     <div class="container">
       <div class="section-title"><span>Experience</span><span class="line"></span></div>
@@ -182,7 +125,7 @@
           </div>
           <div>
             <h3 style="margin:.1rem 0 .3rem">Computer Science Tutor (C++)</h3>
-            <p class="soft">Guide students through fundamentals (control flow, functions, arrays, classes), debugging strategies, and problem decomposition. Create clear examples and lightweight templates to accelerate learning.</p>
+            <p class="soft">Coach students through control flow, functions, arrays, classes, and debugging. Emphasize problem decomposition, readable code, and testable solutions. Build lightweight examples and templates that speed up learning and reinforce fundamentals.</p>
           </div>
         </div>
         <div class="card pad xp-item">
@@ -191,18 +134,33 @@
             <div class="when">2023 — 2024</div>
           </div>
           <div>
-            <h3 style="margin:.1rem 0 .3rem">Safety Operations</h3>
-            <p class="soft">Coordinated safety processes and training, tracked metrics, and collaborated across teams to reduce incidents. Strengthened communication, documentation, and operational discipline.</p>
+            <h3 style="margin:.1rem 0 .3rem">Safety Operations Manager / Robotics Engineer</h3>
+            <p class="soft">Worked ~7 months managing safety operations and ~2 months in Amazon Robotics. Developed strong skills in safety compliance, process reliability, and robotics fundamentals. Collaborated across teams to reduce errors, improve workplace safety, and enhance robotics workflows. These experiences built habits of documentation, reliability, and iterative improvement that now influence my software projects.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Projects -->
   <section id="projects">
     <div class="container">
       <div class="section-title"><span>Projects</span><span class="line"></span></div>
       <div class="grid projects">
+        <article class="card pad project">
+          <div class="soft">C++</div>
+          <h3>Console Utilities (C++)</h3>
+          <p>Small command-line tools focused on clean I/O, input validation, and basic data structures. Great for tutoring examples and quick utilities.</p>
+          <div class="tags">
+            <span class="tag">C++</span><span class="tag">CLI</span><span class="tag">OOP</span>
+          </div>
+          <p class="soft">
+            <a class="break-url" href="https://github.com/AnthonyJamesCastello/fategame" target="_blank" rel="noopener">
+              https://github.com/AnthonyJamesCastello/fategame
+            </a>
+          </p>
+        </article>
+
         <article class="card pad project">
           <div class="soft">Web · HTML/CSS</div>
           <h3>Personal Practice Site</h3>
@@ -210,30 +168,26 @@
           <div class="tags">
             <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">GitHub Pages</span>
           </div>
-          <p style="margin-top:.7rem"><a href="https://anthonyjamescastello.github.io/first-practice-website/" target="_blank" rel="noopener">Live Demo</a> · <a href="https://github.com/AnthonyJamesCastello/first-practice-website" target="_blank" rel="noopener">Source</a></p>
+          <p style="margin-top:.7rem">
+            <a href="https://anthonyjamescastello.github.io/first-practice-website/" target="_blank" rel="noopener">Live Demo</a> ·
+            <a href="https://github.com/AnthonyJamesCastello/first-practice-website" target="_blank" rel="noopener">Source</a>
+          </p>
         </article>
+
         <article class="card pad project">
-          <div class="soft">C++</div>
-          <h3>Console Utilities (C++)</h3>
-          <p>Small command-line tools focused on clean I/O, input validation, and basic data structures. Great for tutoring examples and quick utilities.</p>
+          <div class="soft">HTML/CSS</div>
+          <h3>Components Playground</h3>
+          <p>Collection of small, reusable UI components (cards, navbars, buttons) built with semantic HTML and responsive CSS. Great for practice and iteration.</p>
           <div class="tags">
-            <span class="tag">C++</span><span class="tag">CLI</span><span class="tag">Algorithms</span>
+            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Accessibility</span>
           </div>
-          <p class="soft">Repo link coming soon.</p>
-        </article>
-        <article class="card pad project">
-          <div class="soft">SQL · Web</div>
-          <h3>Simple SQL-backed App</h3>
-          <p>Prototype for a lightweight CRUD app demonstrating schema design, basic queries, and a minimal front end.</p>
-          <div class="tags">
-            <span class="tag">SQL</span><span class="tag">Schemas</span><span class="tag">CRUD</span>
-          </div>
-          <p class="soft">Demo coming soon.</p>
+          <p class="soft">Repo coming soon.</p>
         </article>
       </div>
     </div>
   </section>
 
+  <!-- Resume -->
   <section id="resume">
     <div class="container">
       <div class="section-title"><span>Résumé</span><span class="line"></span></div>
@@ -242,14 +196,7 @@
         <a href="resume.pdf" target="_blank" rel="noopener" aria-label="Open resume in a new tab">
           <img src="resume-thumb.png" alt="Résumé preview thumbnail (optional)" onerror="this.style.display='none'" style="border-radius:10px;box-shadow:var(--shadow)">
         </a>
-        <embed 
-          src="resume.pdf" 
-          type="application/pdf" 
-          width="100%" 
-          height="800" 
-          style="margin-top:1rem; border-radius:10px; box-shadow:var(--shadow);"
-          aria-label="Résumé PDF preview"
-        />
+        <embed src="resume.pdf" type="application/pdf" width="100%" height="800" style="margin-top:1rem; border-radius:10px; box-shadow:var(--shadow);" aria-label="Résumé PDF preview"/>
         <p style="margin-top:1rem">
           <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Open Résumé</a>
           <a class="btn" href="resume.pdf" download="Anthony-Castello-Resume.pdf">Download PDF</a>
@@ -258,13 +205,14 @@
     </div>
   </section>
 
+  <!-- Contact -->
   <section id="contact" class="contact">
     <div class="container">
       <div class="section-title"><span>Contact</span><span class="line"></span></div>
       <div class="grid">
         <div class="card pad">
           <h3 style="margin-top:0">Let’s connect</h3>
-          <p class="soft">Open to internships and part-time roles in IT Support, Help Desk, and junior web projects. If you have an opportunity or just want to say hi, reach out!</p>
+          <p class="soft">Open to internships and entry-level roles. If you have an opportunity—or just want to say hi—reach out!</p>
           <p><strong>Email:</strong> <a href="mailto:codeanthony25@gmail.com">codeanthony25@gmail.com</a></p>
           <p><strong>GitHub:</strong> <a href="https://github.com/AnthonyJamesCastello" target="_blank" rel="noopener">AnthonyJamesCastello</a></p>
           <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/anthony-castello-0ba618338/" target="_blank" rel="noopener">anthony-castello</a></p>
@@ -282,20 +230,5 @@
   </footer>
 
   <button id="toTop" class="btn" aria-label="Back to top" style="position:fixed;right:1rem;bottom:1rem;display:none">↑ Top</button>
-
-  <script>
-    document.getElementById('yr').textContent = new Date().getFullYear();
-    const toTop = document.getElementById('toTop');
-    const onScroll = () => { toTop.style.display = window.scrollY > 400 ? 'inline-flex' : 'none'; };
-    window.addEventListener('scroll', onScroll, { passive:true });
-    toTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
-
-    const menuBtn = document.getElementById('menuBtn');
-    const primaryNav = document.getElementById('primaryNav');
-    menuBtn.addEventListener('click', () => {
-      const open = primaryNav.classList.toggle('open');
-      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-  </script>
 </body>
 </html>
